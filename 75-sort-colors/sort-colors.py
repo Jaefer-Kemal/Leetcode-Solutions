@@ -10,6 +10,7 @@ class Solution:
                 one+=1
             elif nums[i]==2:
                 two+=1
+                
         for i in range(len(nums)):
             if zero!=0:
                 nums[i]=0
