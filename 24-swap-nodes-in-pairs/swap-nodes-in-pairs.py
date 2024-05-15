@@ -17,7 +17,9 @@ class Solution:
                 curr.val = forw
                 curr.next.val = prev
                 curr = curr.next.next
+                
             else:
                 break
+
         return dummy.next
         
