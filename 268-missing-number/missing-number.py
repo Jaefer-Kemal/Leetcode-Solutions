@@ -1,15 +1,5 @@
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
-        len_ = len(nums)
-        dic = {}
-        for i in range(0,len_+1):
-                dic[i]=0
+        return sum(list(range(1,len(nums)+1))) - sum(nums)
         
-        for num in nums:
-            if num in dic:
-                dic[num]+=1
-        
-        for key,value in dic.items():
-            if value==0:
-                return key
         
