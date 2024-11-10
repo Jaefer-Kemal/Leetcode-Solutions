@@ -22,8 +22,7 @@ class Solution:
         
         
         
-        
-        
+'''The First solution'''
         
 #         out =  set()
 #         count = 1
