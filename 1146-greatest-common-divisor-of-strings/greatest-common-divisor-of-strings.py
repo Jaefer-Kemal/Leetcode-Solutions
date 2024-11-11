@@ -6,13 +6,9 @@ class Solution:
                 return b
             return gcd(b%a,a)
 
-        len1 = len(str1)
-        len2 = len(str2)
-
+        len1 , len2 = len(str1) , len(str2)
         gc = gcd(len1,len2)
-
-        div1 = len1//gc
-        div2 = len2//gc
+        div1 , div2 = len1//gc , len2//gc
 
         sliced = str1[:gc]
         print(sliced)
