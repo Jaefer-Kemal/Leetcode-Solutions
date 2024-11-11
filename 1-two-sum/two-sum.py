@@ -6,6 +6,8 @@ class Solution:
                 return [i,used.get(target-nums[i])]
             else:
                 used[nums[i]] = i
+                
+'''First Solution'''
 #         l = 0
 #         r = len(nums) - 1
 #         dict_num = {}
