@@ -1,12 +1,13 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         used = {}
-        for i in range(len(nums)):
-            if target - nums[i] in used:
-                return [i,used.get(target-nums[i])]
+        l = 0
+        while l < len(nums):
+            if nums[l] in used:
+                return [l,used[nums[l]]]
             else:
-                used[nums[i]] = i
-                
+                used[target - nums[l]] = l
+            l += 1
 '''First Solution'''
 #         l = 0
 #         r = len(nums) - 1
