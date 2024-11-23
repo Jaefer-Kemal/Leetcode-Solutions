@@ -3,13 +3,13 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        n = len(matrix)//2
         for row in range(len(matrix)):
-            for col in range(row + 1, len(matrix[0])):
-                matrix[row][col], matrix[col][row] = matrix[col][row], matrix[row][col]
-                
+            for column in range(row,len(matrix[0])):
+                matrix[row][column], matrix[column][row] = matrix[column][row], matrix[row][column]
+       
         for row in range(len(matrix)):
-            matrix[row].reverse()
+            for col in range(len(matrix[0])//2):
+                matrix[row][col], matrix[row][-(col + 1)] = matrix[row][-(col + 1)], matrix[row][col]
                 
                 
                     
