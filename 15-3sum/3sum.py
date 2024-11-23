@@ -4,7 +4,7 @@ class Solution:
         offset = 0
 
         ans = []
-        check = set()
+        dublicate_check = set()
         offset_check = set()
         while offset < len(nums):
             l = offset + 1
@@ -18,8 +18,8 @@ class Solution:
 
             while l < len(nums) and r > offset and l<r:
                 if nums[l] + nums[r] + nums[offset] == 0:
-                    if not (frozenset([nums[l], nums[r], nums[offset]]) in check):
-                        check.add(frozenset([nums[l], nums[r], nums[offset]]))
+                    if not (frozenset([nums[l], nums[r], nums[offset]]) in dublicate_check):
+                        dublicate_check.add(frozenset([nums[l], nums[r], nums[offset]]))
                         ans.append([nums[l], nums[r], nums[offset]])
                     l += 1
                     continue
