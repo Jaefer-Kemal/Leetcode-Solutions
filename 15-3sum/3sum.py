@@ -1,25 +1,34 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
-        page=[]
-        
-        for i in range(len(nums)):
-            if i>0 and nums[i-1]==nums[i]:
+        offset = 0
+
+        ans = []
+        check = set()
+        offset_check = set()
+        while offset < len(nums):
+            l = offset + 1
+            r = len(nums) - 1
+
+            if nums[offset] in offset_check:
+                offset += 1
+                continue
+            else:
+                offset_check.add(nums[offset])
+
+            while l < len(nums) and r > offset and l<r:
+                if nums[l] + nums[r] + nums[offset] == 0:
+                    if not (frozenset([nums[l], nums[r], nums[offset]]) in check):
+                        check.add(frozenset([nums[l], nums[r], nums[offset]]))
+                        ans.append([nums[l], nums[r], nums[offset]])
+                    l += 1
                     continue
-            l,r=1+i,len(nums)-1
-            while l<r:
-                cumsum=nums[i]+nums[l]+nums[r]
-                if cumsum>0:
-                    r-=1
-                elif cumsum<0:
-                    l+=1
+                elif nums[l] + nums[r] + (nums[offset]) > 0:
+                    r -= 1
                 else:
-                    page.append([nums[i],nums[l],nums[r]])
-                    l+=1
-                    while nums[l]==nums[l-1] and l<r:
-                        l+=1
-        return page
-                        
-                    
-                
-            
+                    l += 1
+
+            offset += 1
+        return ans
+
+
