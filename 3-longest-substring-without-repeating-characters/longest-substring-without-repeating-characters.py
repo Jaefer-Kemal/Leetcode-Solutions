@@ -7,7 +7,7 @@ class Solution:
             if s[r] not in check:
                 check.add(s[r])
             else:
-                while s[r] in check and s[l] in check and l < len(s) and l < r:
+                while s[r] in check:
                     check.remove(s[l])
                     l += 1
                 check.add(s[r])
