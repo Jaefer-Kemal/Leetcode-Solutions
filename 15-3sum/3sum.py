@@ -5,16 +5,14 @@ class Solution:
 
         ans = []
         dublicate_check = set()
-        offset_check = set()
+
         while offset < len(nums):
             l = offset + 1
             r = len(nums) - 1
-
-            if nums[offset] in offset_check:
+            
+            if offset > 0 and nums[offset] == nums[offset - 1]:
                 offset += 1
                 continue
-            else:
-                offset_check.add(nums[offset])
 
             while l < len(nums) and r > offset and l<r:
                 if nums[l] + nums[r] + nums[offset] == 0:
