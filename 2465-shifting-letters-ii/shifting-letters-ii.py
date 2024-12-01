@@ -2,7 +2,7 @@ class Solution:
     def shiftingLetters(self, s: str, shifts: List[List[int]]) -> str:
         n = len(s)
         prefix_sum = [0] * n
-        res = [] * n
+        res = []
         for shift in shifts:
             direction = 1 if shift[2] == 1 else -1
             l = shift[0]
