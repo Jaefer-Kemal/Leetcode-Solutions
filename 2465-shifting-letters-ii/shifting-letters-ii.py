@@ -11,11 +11,11 @@ class Solution:
             if r != n:
                 prefix_sum[r] -= direction
 
-        res.append(chr((ord(s[0]) + prefix_sum[0] - ord("a")) % 26 + ord("a")))
-
-        for r in range(1,n):
-            prefix_sum[r] = prefix_sum[r - 1] + prefix_sum[r]
-            res.append(chr((ord(s[r]) + prefix_sum[r] - ord("a")) % 26 + ord("a")))
+        # res.append(chr((ord(s[0]) + prefix_sum[0] - ord("a")) % 26 + ord("a")))
+        shift = 0
+        for r in range(n):
+            shift += prefix_sum[r]
+            res.append(chr((ord(s[r]) + shift - ord("a")) % 26 + ord("a")))
 
         return "".join(res)
 
