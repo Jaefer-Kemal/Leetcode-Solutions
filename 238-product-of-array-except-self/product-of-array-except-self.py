@@ -10,6 +10,6 @@ class Solution:
             suffix[-(i+1)] = nums[-i] * suffix[-(i)]
             
         for i in range(len(nums)):
-            ans.append(prefix[i] * suffix[i + 1])
+            nums[i] = (prefix[i] * suffix[i + 1])
         
-        return ans
+        return nums
