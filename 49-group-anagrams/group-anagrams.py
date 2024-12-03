@@ -11,8 +11,11 @@ class Solution:
                 cnt[ls] = [s]
             else:
                 cnt[ls].append(s)
-            
-        return list(cnt.values())
+        res = []   
+        
+        for val in cnt.values():
+            res.append(val)
+        return res
             
             
 
