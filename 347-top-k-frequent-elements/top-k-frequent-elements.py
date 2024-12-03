@@ -10,10 +10,7 @@ class Solution:
 
 
 
-
-
-
-
+    '''First Solution'''
         # c = Counter(nums)
         
         # c = dict(sorted(c.items(),reverse = True, key = lambda a:a[1]))
