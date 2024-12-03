@@ -5,11 +5,12 @@ class Solution:
             ls = [0] * 26
             for char in s:
                 ls[ord(char) - ord("a")] += 1
+                
             ls = tuple(ls)
             if ls not in cnt:
                 cnt[ls] = [s]
             else:
-                cnt[ls] += [s]
+                cnt[ls].append(s)
             
         return list(cnt.values())
             
