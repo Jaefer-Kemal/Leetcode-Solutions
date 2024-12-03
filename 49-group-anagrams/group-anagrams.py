@@ -1,21 +1,15 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        cnt = {}
+        cnt = defaultdict(list)
         for s in strs:
-            ls = [0] * 26
+            freq = [0] * 26
             for char in s:
-                ls[ord(char) - ord("a")] += 1
+                freq[ord(char) - ord("a")] += 1
                 
-            ls = tuple(ls)
-            if ls not in cnt:
-                cnt[ls] = [s]
-            else:
-                cnt[ls].append(s)
-        res = []   
-        
-        for val in cnt.values():
-            res.append(val)
-        return res
+            freq = tuple(freq)
+            cnt[freq].append(s)
+           
+        return list(cnt.values())
             
             
 
