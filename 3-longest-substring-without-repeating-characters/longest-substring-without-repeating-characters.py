@@ -10,6 +10,6 @@ class Solution:
                 check.remove(s[l])
                 l += 1
             check.add(s[r])
-            max_len = max(max_len,r - l + 1)
+            max_len = max(max_len,len(check))
         
         return max_len
