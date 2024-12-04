@@ -13,11 +13,10 @@ class Solution:
                     if num in seen:
                         cnt += seen[num]
                         break
-                    
                     cnt += 1
-                    seen[num] = cnt
                     num += 1
-                    
+
+                seen[nums[r]] = cnt 
                 longest = max(longest, cnt)
             cnt = 0
 
