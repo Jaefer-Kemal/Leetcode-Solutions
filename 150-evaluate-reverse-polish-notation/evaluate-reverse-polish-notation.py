@@ -14,7 +14,7 @@ class Solution:
                 elif tokens[r] == "-":
                     res = b - a
                 elif tokens[r] == "/":
-                    res = b / a
+                    res = int(b / a)
                 elif tokens[r] == "*":
                     res = b * a
                 stack.append(res)
@@ -22,4 +22,4 @@ class Solution:
                 stack.append(tokens[r])
   
 
-        return int(stack[-1])
+        return stack[-1]
