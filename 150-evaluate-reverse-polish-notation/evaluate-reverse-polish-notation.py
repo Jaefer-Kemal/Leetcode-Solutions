@@ -10,13 +10,13 @@ class Solution:
                 a = int(stack.pop())
                 b = int(stack.pop())
                 if tokens[r] == "+":
-                    res = a + b
+                    res = b + a
                 elif tokens[r] == "-":
                     res = b - a
                 elif tokens[r] == "/":
                     res = b / a
                 elif tokens[r] == "*":
-                    res = a * b
+                    res = b * a
                 stack.append(res)
             else:
                 stack.append(tokens[r])
