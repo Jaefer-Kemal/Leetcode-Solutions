@@ -1,35 +1,25 @@
 class Solution:
     def decrypt(self, code: List[int], k: int) -> List[int]:
-        res = [0] * len(code)
-        if k == 0 :
+        n = len(code)
+        res = [0] * n
+        
+        if k == 0:
             return res
         
-        elif k > 0:
-            for i in range(len(code)):
-                cnt = k
-                j = i + 1
+        if k > 0:
+            for i in range(n):
                 sum_ = 0
-                while cnt > 0:
-                    index = j % len(code)
-                    if index != i:
-                        sum_ += code[index]
-                        cnt -= 1
-                    j += 1
+                for j in range(1, k + 1):
+                    index = (i + j) % n
+                    sum_ += code[index]
                 res[i] = sum_
-                        
-        else:
-            for i in range(len(code)):
-                cnt = k
-                j = i - 1
+                
+        else:  # k < 0
+            for i in range(n):
                 sum_ = 0
                 for j in range(1, abs(k) + 1):
-                    index = (i - j) % len(code)
+                    index = (i - j) % n
                     sum_ += code[index]
-    
                 res[i] = sum_
+                
         return res
-
-                    
-
-
-        
