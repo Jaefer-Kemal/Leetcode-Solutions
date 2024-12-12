@@ -1,24 +1,20 @@
 class Solution:
     def validPalindrome(self, s: str) -> bool:
-        left = 0
-        right = len(s) - 1
-        flag1 = True
-        flag2 = True
+        def is_palindrome(l, r):
+            while l < r:
+                if s[l] != s[r]:
+                    return False
+                l += 1
+                r -= 1
+            return True
+        
+        left, right = 0, len(s) - 1
+        
         while left < right:
             if s[left] != s[right]:
-                if flag1:
-                    l = left
-                    r = right
-                    right -= 1
-                    flag1 = False
-                    continue
-                elif flag2:
-                    right = r
-                    left = l + 1
-                    flag2 = False
-                    continue
-                return False
+                # Check by skipping either left or right character
+                return is_palindrome(left + 1, right) or is_palindrome(left, right - 1)
             left += 1
             right -= 1
-        return True
         
+        return True
