@@ -3,8 +3,8 @@ class Solution:
         if len(s) != len(t):
             return False
         n = len(s)
-        s1 = defaultdict(int)
-        t1 = defaultdict(int)
+        s1 = Counter()
+        t1 = Counter()
         for r in range(n):
             s1[s[r]] += 1
             t1[t[r]] += 1
