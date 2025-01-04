@@ -3,6 +3,8 @@ class Solution:
         product = 1
         for num in nums:
             product *= num
+            if product == 0:
+                return 0
         if product > 0:
             return 1
         elif product < 0:
