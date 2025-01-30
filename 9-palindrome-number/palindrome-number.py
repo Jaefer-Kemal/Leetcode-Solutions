@@ -1,25 +1,20 @@
-class Solution:
-    def isPalindrome(self, x: int) -> bool:
+class Solution(object):
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        if x < 0:
+            return False
         
-        reverse = 0
-        temp = x
-
-        while temp > 0 :
-            remainder = temp % 10
-            reverse = (reverse *  10) + remainder
-            temp = temp // 10
-
-        if reverse == x:
-            return True
-        return False
-
-        # l = 0
-        # x = str(x)
-        # r = len(x) - 1
-        # while l < r:
-        #     if x[l] != x[r]:
-        #         return False
-        #     l += 1
-        #     r -= 1
-        # return True 
+        test = x
+        res = 0
+    
+        while x:
+            last_digit = x % 10
+            res = last_digit + (res * 10)
+            x = x // 10
         
+
+        return res == test
+
