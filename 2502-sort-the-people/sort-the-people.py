@@ -4,14 +4,15 @@ class Solution:
         size = len(names)
         for i in range(1, size):
             j = i - 1
+            current_index = i
             while j >= 0:
-                if heights[j] < heights[i]:
-                    heights[i], heights[j] = heights[j], heights[i]
-                    names[i], names[j] = names[j], names[i]
+                if heights[j] < heights[current_index]:
+                    heights[current_index], heights[j] = heights[j], heights[current_index]
+                    names[current_index], names[j] = names[j], names[current_index]
                 else:
                     break
                 j -= 1
-                i -= 1
+                current_index -= 1
         
         return names
                 
