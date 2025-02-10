@@ -1,5 +1,23 @@
 class Solution:
     def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+        maximum_height = 10 ** 5 + 1
+        height_array = ["" for _ in range(maximum_height)]
+
+        for i in range(len(names)):
+            index = heights[i]
+
+            height_array[index] = names[i]
+
+        res = []
+
+        for name in height_array[::-1]:
+            if name:
+                res.append(name)
+
+        return res
+            
+
+
         '''Insertion Sort'''
         size = len(names)
         for i in range(1, size):
