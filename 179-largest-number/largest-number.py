@@ -1,9 +1,10 @@
 class Solution:
     def largestNumber(self, nums: List[int]) -> str:
+        str_nums = list(map(str,nums))
+        # multiplying the string by 10 will repeat it 10 time and then order lexicographically
+        res =  "".join(sorted(str_nums, key = lambda x: x * 10, reverse = True))
 
-        nums = list(map(str, nums))
-        nums.sort(key=lambda x: x*10, reverse=True)
-        
-        result = "".join(nums)
-        
-        return '0' if result[0] == '0' else result
+        if res[0] == "0":
+            return "0"
+        else:
+            return res
