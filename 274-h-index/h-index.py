@@ -1,6 +1,6 @@
 class Solution:
     def hIndex(self, citations: List[int]) -> int:
-        # First lets sort the citations:
+        # First lets sort it according to the number of citations in each paper
         citations.sort()
 
         # Total number of paper 
