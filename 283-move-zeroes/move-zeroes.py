@@ -3,28 +3,20 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        read = 0
-        write = 0
+        holder = 0
+        seeker = 1
 
-        while read < len(nums):
-            if nums[read] != 0:
-                nums[read], nums[write] = nums[write], nums[read]
-                
-                write += 1
-            read += 1
+        while seeker < len(nums) and holder < len(nums):
+            if nums[seeker] != 0:
+                if nums[holder] == 0:
+                    nums[seeker], nums[holder] = nums[holder], nums[seeker]
+                    
+                    holder += 1
+                    seeker += 1
+                else:
+                    holder += 1
+                    if holder >= seeker:
+                        seeker += 1
+            else:
+                seeker += 1
 
-        '''First Solution'''
-        # l = 0
-        # r = 1
-        # while r<len(nums):
-        #     if nums[l] == 0 and nums[r] != 0:
-        #         nums[l], nums[r] = nums[r], nums[l]
-        #         l += 1
-        #         r = l + 1
-        #     elif nums[l] == 0 and nums[r] == 0:
-        #         r += 1
-        #     else:
-        #         l += 1
-        #         r = l + 1
-            
-            
