@@ -1,19 +1,29 @@
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
-        k = len(p)
-        test = Counter(p)
-        c = Counter(s[:k])
-        res = []
-        if test == c:
-            res.append(0)
-        l = 0
-        for r in range(k,len(s)):
-            
-            c[s[l]] -= 1
-            c[s[r]] += 1
-                
-            l += 1
-            if test == c:
-                res.append(l)
-        return res
+        if len(p) > len(s):
+            return []
 
+        p_chars_count = Counter(p)
+        k = len(p)
+        s_chars_count = Counter(s[:k])
+
+        anagram_index = []
+        if p_chars_count == s_chars_count:
+            anagram_index.append(0)
+
+        left = 0
+        for right in range(k,len(s)):
+            s_chars_count[s[right]] += 1
+            s_chars_count[s[left]] -= 1
+
+            if s_chars_count[s[left]] <= 0:
+                del s_chars_count[s[left]]
+            
+            left += 1
+
+            if s_chars_count == p_chars_count:
+                anagram_index.append(left)
+        
+        return anagram_index
+
+        
