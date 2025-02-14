@@ -2,10 +2,8 @@ class Solution:
     def minWindow(self, s: str, t: str) -> str:
 
         target = Counter(t)
-
         min_length = float("inf")
         l = 0
-        minimum_window = ""
 
         completed_chars =set()
         s_chars_count = defaultdict(int)
