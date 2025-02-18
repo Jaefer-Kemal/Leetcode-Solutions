@@ -3,7 +3,8 @@ class Solution:
         prefix_sum = 0
         
         cnt = defaultdict(int)
-        # Initialize it with 0 having frequqency of 1
+        # Initialize it with 0 having frequency of 1, 
+        # this helpful when prefix sum  equal k
         cnt[0] = 1
 
         result = 0
