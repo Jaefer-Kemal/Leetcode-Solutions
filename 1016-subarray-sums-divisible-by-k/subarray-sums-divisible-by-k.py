@@ -1,18 +1,16 @@
 class Solution:
     def subarraysDivByK(self, nums: List[int], k: int) -> int:
-        cnt = {0:1}
-        res = 0
+        prefix_mod_count = defaultdict(int)
+        prefix_mod_count[0] = 1
+
         prefix_sum = 0
-        for r in range(len(nums)):
-            prefix_sum += nums[r]
-            rem = prefix_sum % k
-
-            if rem in cnt:
-                res += cnt[rem]
-                cnt[rem] += 1
+        result = 0
+        for num in nums:
+            prefix_sum += num
+            mod = prefix_sum % k
             
-            else:
-                cnt[rem] = 1
+            if mod in prefix_mod_count:
+                result += prefix_mod_count[mod]
+            prefix_mod_count[mod] += 1
 
-        return res
-        
+        return result
