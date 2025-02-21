@@ -32,25 +32,18 @@ class Solution:
                 next_node = next_node.next
                 curr.next = prev
             
-            reversed_middle_node = curr
+            reversed_second_half = curr
 
         else:
+            # since we only have one node
+            reversed_second_half = slow
 
-            reversed_middle_node = slow
-
-        # Check for palindrom
-        while reversed_middle_node:
-            if head.val != reversed_middle_node.val:
+        # Lets check for palindrome
+        while reversed_second_half:
+            if head.val != reversed_second_half.val:
                 return False
             
             head = head.next
-            reversed_middle_node = reversed_middle_node.next
+            reversed_second_half = reversed_second_half.next
         
         return True
-        
-            
-
-        
-
-        
-        
