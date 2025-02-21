@@ -6,26 +6,20 @@
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
 
-        curr = head
-        length = 0
-
-        # Checking the length of linkedlist
-        while curr:
-            length += 1
-            curr = curr.next
-                        
-        position = length 
-
         dummy = ListNode(-1)
         dummy.next = head
-        curr = dummy
 
-        while curr:
-            if position == n:
-                curr.next = curr.next.next
-                break
-                
-            curr = curr.next
-            position -= 1
+        fast = dummy
+        slow = dummy
+
+        for _ in range(n):
+            fast = fast.next
+
+        
+        while fast.next:
+            slow = slow.next
+            fast = fast.next
+
+        slow.next = slow.next.next
 
         return dummy.next
