@@ -11,6 +11,4 @@ class Solution:
             slow = slow.next
             fast = fast.next.next
 
-        head = slow
-
         return slow
