@@ -9,24 +9,23 @@ class Solution:
         curr = head
         while list1 and list2:
             if list1.val < list2.val:
-                new_node = ListNode(list1.val)
+                curr.next = list1
                 list1 = list1.next
             else:
-                new_node = ListNode(list2.val)
+                curr.next = list2
                 list2 = list2.next
 
-            curr.next = new_node
             curr = curr.next
         
         while list1 or list2:
             if list1:
-                curr.next = ListNode(list1.val)
-                curr = curr.next
+                curr.next = list1
                 list1 = list1.next
             
             if list2:
-                curr.next = ListNode(list2.val)
-                curr = curr.next
+                curr.next = list2
                 list2 = list2.next
+
+            curr = curr.next
 
         return head.next
