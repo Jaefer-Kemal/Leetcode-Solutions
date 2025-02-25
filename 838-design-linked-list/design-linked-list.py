@@ -14,7 +14,9 @@ class MyLinkedList:
         self.tail.prev = self.head
 
         self.length = 0
+
     def get(self, index: int) -> int:
+
         if index < 0 or index >= self.length:
             return -1
 
@@ -67,55 +69,96 @@ class MyLinkedList:
         self.length += 1
 
         return
-    def addAtIndex(self, index: int, val: int) -> None:
 
+    def addAtIndex(self, index: int, val: int) -> None:
         if index < 0 or index > self.length:
             return 
         
         
         new_node = Node(val)
+        half = self.length // 2
 
-        position = 0
-        curr = self.head
+        if index < half:
+            position = 0
+            curr = self.head
 
-        while curr:
-            if position == index:
-                previous_node = curr
-                next_node = curr.next
+            while curr:
+                if position == index:
+                    previous_node = curr
+                    next_node = curr.next
 
-                new_node.next = next_node
-                new_node.prev = previous_node
+                    new_node.next = next_node
+                    new_node.prev = previous_node
 
-                next_node.prev = new_node
-                previous_node.next = new_node
+                    next_node.prev = new_node
+                    previous_node.next = new_node
+                    self.length += 1
+                    return
+                
+                position += 1
+                curr = curr.next
+        
+        else:
+            position = self.length
+            curr = self.tail
 
-                self.length += 1
-                return
+            while curr:
+                if position == index:
+                    previous_node = curr.prev
+                    next_node = curr
+
+                    new_node.next = next_node
+                    new_node.prev = previous_node
+
+                    next_node.prev = new_node
+                    previous_node.next = new_node
+
+                    self.length += 1
+                    return
+
+                curr = curr.prev
+                position -= 1
             
-            position += 1
-            curr = curr.next
-
-
     def deleteAtIndex(self, index: int) -> None:
         if index < 0 or index >= self.length:
             return
         
-        position = 0
-        curr = self.head
+        half = self.length // 2
 
-        while curr:
-            if position == index:
-                previous_node = curr
-                next_node = curr.next.next
+        if index < half:
+            position = 0
+            curr = self.head
 
-                previous_node.next = next_node
-                next_node.prev = previous_node
+            while curr:
+                if position == index:
+                    previous_node = curr
+                    next_node = curr.next.next
 
-                self.length -= 1
-                return
+                    previous_node.next = next_node
+                    next_node.prev = previous_node
+                    
+                    self.length -= 1
+                    return
 
-            position += 1
-            curr = curr.next
+                position += 1
+                curr = curr.next
+        else:
+            position = self.length - 1
+            curr = self.tail
+
+            while curr:
+                if position == index:
+                    next_node = curr
+                    previous_node = curr.prev.prev
+
+                    next_node.prev = previous_node
+                    previous_node.next = next_node
+
+                    self.length -= 1
+                    return
+                
+                position -= 1
+                curr = curr.prev
 
 
 # Your MyLinkedList object will be instantiated and called as such:
