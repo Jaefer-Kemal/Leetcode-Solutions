@@ -10,6 +10,7 @@ class Solution:
             print(curr.val, end = "->")
             curr = curr.next
         print(None)
+        
     def pairSum(self, head: Optional[ListNode]) -> int:
         # Lets find the middle node
         slow = head
