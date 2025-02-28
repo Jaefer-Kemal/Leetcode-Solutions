@@ -1,19 +1,21 @@
 class Solution:
     def maxAbsoluteSum(self, nums: List[int]) -> int:
-        prefix_sum = 0
-        maximum_sum_1 = 0
-        for i in range(len(nums)):
-            prefix_sum += nums[i]
-            if prefix_sum < 0:
-                prefix_sum = 0
-            maximum_sum_1 = max(maximum_sum_1, prefix_sum)
+        positive_sum = 0
+        negative_sum = 0
 
-        prefix_sum = 0
-        maximum_sum_2 = 0
+        maximum_sum = 0
+        minimum_sum = 0
         for i in range(len(nums)):
-            prefix_sum += (-nums[i])
-            if prefix_sum < 0:
-                prefix_sum = 0
-            maximum_sum_2 = max(maximum_sum_2, prefix_sum)
+            positive_sum += nums[i]
+            negative_sum += nums[i]
 
-        return max(maximum_sum_1, maximum_sum_2)
+            if positive_sum < 0:
+                positive_sum = 0
+
+            if negative_sum > 0:
+                negative_sum = 0
+
+            maximum_sum = max(maximum_sum, positive_sum)
+            minimum_sum = min(minimum_sum, negative_sum)
+
+        return max(abs(minimum_sum), maximum_sum)
