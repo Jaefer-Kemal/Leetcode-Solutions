@@ -3,8 +3,9 @@ class Solution:
         points.sort()
         i = 0
         min_shots = 0
-        print(points)
-        
+
+        # Checking in ascending order 
+        shots_1 = 0
         while i < len(points):
             x1 = points[i][0]
             x2 = points[i][1]
@@ -13,11 +14,12 @@ class Solution:
                 i += 1
 
 
-            min_shots += 1
+            shots_1 += 1
 
         i = len(points) - 1
-
-        shots = 0
+        
+        # Checking in descending order
+        shots_2 = 0
         while i >= 0:
             x1 = points[i][0]
             x2 = points[i][1]
@@ -25,8 +27,8 @@ class Solution:
             while i >= 0 and (points[i][0] <= x1 <= points[i][1] or  points[i][0] <= x2 <= points[i][1]):
                 i -= 1
 
-            shots += 1
+            shots_2 += 1
         
-        min_shots = min(min_shots, shots)
+        min_shots = min(shots_2, shots_1)
 
         return min_shots
