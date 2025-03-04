@@ -3,24 +3,13 @@ class Solution:
         if len(nums) == 1:
             return True
 
-        r = len(nums) - 1
-        l = r - 1
-        
-        make_it = True
+        max_reach = 0
 
-        while l >= 0:
-            if l + nums[l] >= r:
-                make_it = True
-                r = l
-                l -= 1
-            else:
-                make_it = False
-                l -= 1
-        
-        if make_it:
-            return True
+        for i in range(len(nums)):
+            if i > max_reach:
+                return False
+            
+            max_reach = max(max_reach, i + nums[i])
 
-        return False
-                
 
-        
+        return True
