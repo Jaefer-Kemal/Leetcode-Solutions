@@ -28,8 +28,6 @@ class DataStream:
         
         return True
         
-    
-
 
 
 # Your DataStream object will be instantiated and called as such:
