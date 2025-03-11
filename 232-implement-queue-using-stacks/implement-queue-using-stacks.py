@@ -9,28 +9,25 @@ class MyQueue:
         self.in_stack.append(x)
 
     def pop(self) -> int:
-        if not self.out_stack:
-            self.out_stack = self.in_stack[::-1]
-            self.in_stack = []
+        self.transfer()
 
         return self.out_stack.pop()
         
 
     def peek(self) -> int:
-        if not self.out_stack:
-            self.out_stack = self.in_stack[::-1]
-            self.in_stack = []
+        self.transfer()
         
         return self.out_stack[-1]
 
     def empty(self) -> bool:
-        if not self.out_stack:
-            self.out_stack = self.in_stack[::-1]
-            self.in_stack = []
+        self.transfer()
 
         return len(self.out_stack) == 0
-        
 
+    def transfer(self):
+        if not self.out_stack:
+            while self.in_stack:
+                self.out_stack.append(self.in_stack.pop())
         
 
 
