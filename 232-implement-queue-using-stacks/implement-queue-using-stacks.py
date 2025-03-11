@@ -10,7 +10,7 @@ class MyQueue:
 
     def pop(self) -> int:
         if not self.out_stack:
-            self.out_stack = self.in_stack.copy()[::-1]
+            self.out_stack = self.in_stack[::-1]
             self.in_stack = []
 
         return self.out_stack.pop()
@@ -18,7 +18,7 @@ class MyQueue:
 
     def peek(self) -> int:
         if not self.out_stack:
-            self.out_stack = self.in_stack.copy()[::-1]
+            self.out_stack = self.in_stack[::-1]
             self.in_stack = []
         
         return self.out_stack[-1]
