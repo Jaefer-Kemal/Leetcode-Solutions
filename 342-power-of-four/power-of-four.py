@@ -3,8 +3,8 @@ class Solution:
         if n == 1:
             return True
         
-        if n < 1 or n % 4:
+        if n < 1:
             return False
 
-        return self.isPowerOfFour(n//4)
+        return self.isPowerOfFour(n/4)
         
