@@ -4,29 +4,29 @@ class DataStream:
         self.queue = deque()
         self.value = value
         self.k = k
-        self.unwanted = defaultdict(int)
+        self.invalid = 0
 
     def consec(self, num: int) -> bool:
-        self.queue.append(num)
-        flag = False
         if num != self.value:
-            self.unwanted[num] += 1
+            self.invalid += 1
 
         if len(self.queue) < self.k:
+            self.queue.append(num)
+            if len(self.queue) == self.k and self.invalid == 0:
+                return True
             return False
-        
-        if self.queue[0] != self.value:
-            flag = True
-            self.unwanted[self.queue[0]] -= 1
-            if self.unwanted[self.queue[0]] == 0:
-                del self.unwanted[self.queue[0]] 
 
-        self.queue.popleft()
+        self.queue.append(num)
+        popped = self.queue.popleft()
 
-        if self.unwanted or flag:
-            return False
+        if popped != self.value:
+            self.invalid -= 1
+
+        if self.invalid == 0:
+            return True
         
-        return True
+        return False
+
         
 
 
