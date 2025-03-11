@@ -25,7 +25,7 @@ class MyQueue:
 
     def empty(self) -> bool:
         if not self.out_stack:
-            self.out_stack = self.in_stack.copy()[::-1]
+            self.out_stack = self.in_stack[::-1]
             self.in_stack = []
 
         return len(self.out_stack) == 0
