@@ -10,8 +10,8 @@ class Solution:
                     max_ind = i
             res.append(max_ind + 1)
             
-            arr = list(reversed(arr[0:max_ind + 1])) + arr[max_ind + 1:]
-            arr = list(reversed(arr[0 : last_ind])) + arr[last_ind : ]
+            arr = arr[0 : max_ind + 1][::-1] + arr[max_ind + 1:]
+            arr = arr[0 : last_ind][::-1] + arr[last_ind : ]
 
             res.append(last_ind)
             last_ind -= 1
