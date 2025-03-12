@@ -1,16 +1,23 @@
 class Solution:
     def kthCharacter(self, k: int) -> str:
-        string = ["a"]
+        length = 2 ** ceil(log2(k))
 
-        while len(string) < k:
+        def generate(length):
 
-            length = len(string)
+            if length == 1:
+                return ["a"]
 
-            for i in range(length):
-                if string[i] == "z":
-                    string.append("a")
-                else:
-                    new_char = chr(ord(string[i]) + 1)
-                    string.append(new_char)
+            previous = generate(length // 2)
             
-        return string[k - 1]
+            len_ = len(previous)
+            for i in range(len_):
+                char = previous[i]
+                if char == "z":
+                    previous.append("a")
+                else:
+                    new_char = chr(ord(char) + 1)
+                    previous.append(new_char)
+            return previous
+            
+        return generate(length)[k - 1]
+
