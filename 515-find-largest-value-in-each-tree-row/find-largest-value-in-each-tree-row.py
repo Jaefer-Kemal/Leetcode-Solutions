@@ -18,18 +18,21 @@ class Solution:
         rem = []
         while queue:
             front = queue.popleft()
-            if front:
-                maximum = max(maximum, front.val)
-                rem.append(front)
+
+            maximum = max(maximum, front.val)
+            rem.append(front)
             
-            if not queue:
-                if maximum !=  float("-inf"):
-                    res.append(maximum)
-                    maximum = float("-inf")
+            if not queue: 
+                res.append(maximum)
+                maximum = float("-inf")
+
                 while rem:
                     node = rem.pop()
-                    queue.append(node.left)
-                    queue.append(node.right)
+
+                    if node.left:
+                        queue.append(node.left)
+                    if node.right:
+                        queue.append(node.right)
 
         return res
         
