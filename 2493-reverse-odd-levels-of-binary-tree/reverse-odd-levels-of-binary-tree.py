@@ -6,14 +6,13 @@
 #         self.right = right
 class Solution:
     def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        
+        # Solved using BFS
         queue = deque([root])
-
         level = 0
-
         while queue:
             # used to store odd level node
             store_odd_node = []
+            
             for i in range(len(queue)):
                 node = queue.popleft()
 
@@ -28,6 +27,7 @@ class Solution:
             if store_odd_node:
                 left = 0
                 right = len(store_odd_node) - 1
+
                 while left <= right:
                     left_node = store_odd_node[left]
                     right_node = store_odd_node[right]
