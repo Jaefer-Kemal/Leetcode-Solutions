@@ -9,15 +9,14 @@ class Solution:
 
         def dfs(root, minimum, maximum):
             if root is None:
-                return 0
+                return maximum - minimum
 
             minimum = min(minimum, root.val)
             maximum = max(maximum, root.val)
             
-            res = maximum - minimum
-            res = max(res, dfs(root.left, minimum, maximum))
-            res = max(res, dfs(root.right, minimum, maximum))
+            left_res = dfs(root.left, minimum, maximum)
+            right_res = dfs(root.right, minimum, maximum)
 
-            return res
+            return max(left_res, right_res)
         
         return max(dfs(root.left, root.val, root.val), dfs(root.right, root.val, root.val))
