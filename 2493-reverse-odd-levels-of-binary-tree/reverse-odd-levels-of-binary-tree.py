@@ -13,23 +13,24 @@ class Solution:
 
         while queue:
             # used to store odd level node
-            store = []
+            store_odd_node = []
             for i in range(len(queue)):
                 node = queue.popleft()
+
                 if level % 2 != 0:
-                    store.append(node)
+                    store_odd_node.append(node)
                 
                 if node.left:
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
 
-            if store:
+            if store_odd_node:
                 left = 0
-                right = len(store) - 1
+                right = len(store_odd_node) - 1
                 while left <= right:
-                    left_node = store[left]
-                    right_node = store[right]
+                    left_node = store_odd_node[left]
+                    right_node = store_odd_node[right]
                     
                     left_node.val, right_node.val = right_node.val, left_node.val
 
