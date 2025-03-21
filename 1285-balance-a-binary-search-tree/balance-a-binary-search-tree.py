@@ -11,27 +11,22 @@ class Solution:
             if root is None:
                 return []
 
-            res = []
-            res.extend(inorder(root.left))
-            res.append(root.val)
-            res.extend(inorder(root.right))
-
-            return res
+            return inorder(root.left) + [root.val] + inorder(root.right)
 
     
-        res = inorder(root)
+        sorted_vals = inorder(root)
 
-        def BST(res):
-            if len(res) == 0:
+        def BuildBST(left, right):
+            if left > right:
                 return None
             
-            mid = len(res) // 2
+            mid = (left + right) // 2
 
-            root = TreeNode(res[mid])
+            root = TreeNode(sorted_vals[mid])
 
-            root.left = BST(res[:mid])
-            root.right = BST(res[mid +1 :])
+            root.left = BuildBST(left , mid - 1)
+            root.right = BuildBST(mid + 1, right)
 
             return root
         
-        return BST(res)
+        return BuildBST(0, len(sorted_vals) - 1)
