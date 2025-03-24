@@ -18,4 +18,4 @@ class Solution:
                 return binarySearch(mid + 1,high, ans)
 
         
-        return binarySearch(0, n, n)
+        return binarySearch(1, n, n)
