@@ -10,29 +10,25 @@ class Solution:
 
                 if s[i].isdigit():
                     num.append(s[i])
-
+                
                 elif s[i] == "[":
-                    word, index = decode(i + 1)
-                    new_word = int("".join(num)) * word
-                    stack.append(new_word)
-                    i = index # todo
+                    i, word = decode(i + 1)
+                    repeated_word = word * int("".join(num)) 
+                    stack.append(repeated_word)
                     num = []
-
+                    continue
+                
                 elif s[i] == "]":
-                    return ("".join(stack), i)
+                    return (i + 1, "".join(stack))
+                
                 else:
                     stack.append(s[i])
-                
+
                 i += 1
-
-            return ("".join(stack), i)
-                    
-
-        word, index = decode(0)
+            
+            return (i, "".join(stack))
+        
+        i, word = decode(0)
 
         return word
-
-
-
-                
 
