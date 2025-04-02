@@ -1,6 +1,5 @@
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        n = len(temperatures)
         ans = [0] * (len(temperatures))
 
         monotonic_stack = []
