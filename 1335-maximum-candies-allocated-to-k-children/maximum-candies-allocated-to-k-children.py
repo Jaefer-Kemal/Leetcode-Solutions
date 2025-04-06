@@ -2,7 +2,7 @@ class Solution:
     def checker(self, candies, mid):
         cnt = 0
         for candy in candies:
-            cnt += floor(candy/mid)
+            cnt += candy // mid
         
         return cnt
 
