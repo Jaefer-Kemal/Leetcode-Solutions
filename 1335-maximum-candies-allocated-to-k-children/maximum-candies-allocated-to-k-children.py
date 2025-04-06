@@ -14,7 +14,7 @@ class Solution:
             return 0
 
         low = 1
-        high = total_candies
+        high = max(candies)
         res = 0
 
         while low <= high:
