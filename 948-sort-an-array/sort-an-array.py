@@ -1,18 +1,37 @@
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
-        nums_count = defaultdict(int)
-
-        maximum_element = max(nums) + 1
-        minimum_element = min(nums)
-        
-        for i in range(len(nums)):
-            nums_count[nums[i]] += 1
-
-        i = 0
-        for num in range(minimum_element, maximum_element):
-            while nums_count[num] > 0:
-                nums[i] = num
-                nums_count[num] -= 1
+        def mergedArray(left, right):
+            merged = []
+            i = 0
+            j = 0
+            while i < len(left) and j < len(right):
+                if left[i] <= right[j]:
+                    merged.append(left[i])
+                    i += 1
+                else:
+                    merged.append(right[j])
+                    j += 1
+            
+            while i < len(left):
+                merged.append(left[i])
                 i += 1
+            
+            while j < len(right):
+                merged.append(right[j])
+                j += 1
+            
+            return merged
+        def mergeSort(nums):
+            if len(nums) == 1:
+                return [nums[0]]
 
-        return nums
+            low = 0
+            high = len(nums) - 1
+            mid = (low + high) // 2
+
+            left = mergeSort(nums[:mid + 1])
+            right = mergeSort(nums[mid + 1: ])
+
+            return mergedArray(left, right)
+
+        return mergeSort(nums)
