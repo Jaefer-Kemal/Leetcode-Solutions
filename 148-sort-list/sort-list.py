@@ -7,8 +7,7 @@ class Solution:
     def mergedArray(self, left, right):
         merged = ListNode(-1)
         temp = merged
-        i = 0
-        j = 0
+
         while left and right:
             if left.val <= right.val:
                 temp.next = left
@@ -26,8 +25,6 @@ class Solution:
             temp.next = right
         
         return merged.next
-
-    
             
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head or not head.next:
@@ -44,10 +41,10 @@ class Solution:
         mid = prev
         mid.next = None
 
-        first = head
-        second = slow
+        first_part = head
+        second_part = slow
 
-        left = self.sortList(first)
-        right = self.sortList(second)
+        left = self.sortList(first_part)
+        right = self.sortList(second_part)
 
         return self.mergedArray(left, right)
