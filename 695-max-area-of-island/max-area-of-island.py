@@ -50,7 +50,6 @@ class Solution:
                 for node in neighbour:
                     stack.append(node)
 
-            print(current_sum)
             max_sum = max(max_sum, current_sum)
 
         return max_sum
