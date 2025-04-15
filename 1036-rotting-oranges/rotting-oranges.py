@@ -1,10 +1,11 @@
 class Solution:
-    def isbound(self,n,m, row, col):
+    def isbound(self, n, m, row, col):
         return 0 <= row < n and 0 <= col < m
 
     def orangesRotting(self, grid: List[List[int]]) -> int:
         n = len(grid)
         m = len(grid[0])
+        direction = ((0,1),(1,0),(-1,0),(0,-1))
         queue = deque()
         min_time = 0
         fresh = 0
@@ -26,25 +27,11 @@ class Solution:
             for _ in range(len_):
                 row, col = queue.popleft()
 
-                if self.isbound(n,m, row + 1,col) and grid[row + 1][col] == 1:
-                    fresh -= 1
-                    grid[row + 1][col] = 2
-                    queue.append((row + 1,col))
-
-                if self.isbound(n,m, row, col + 1) and grid[row][col + 1] == 1:
-                    fresh -= 1
-                    grid[row][col + 1] = 2
-                    queue.append((row, col + 1))
-
-                if self.isbound(n,m, row - 1,col) and grid[row - 1][col] == 1:
-                    fresh -= 1
-                    grid[row - 1][col] = 2
-                    queue.append((row - 1,col))
-
-                if self.isbound(n,m, row,col - 1) and grid[row][col - 1] == 1:
-                    fresh -= 1
-                    grid[row][col - 1] = 2
-                    queue.append((row, col - 1))
+                for nr, nc in direction:
+                    if self.isbound(n, m, row + nr, col + nc) and grid[row + nr][col + nc] == 1:
+                        fresh -= 1
+                        grid[row + nr][col + nc] = 2
+                        queue.append((row + nr, col + nc))
 
             min_time += 1
 
