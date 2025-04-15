@@ -7,11 +7,11 @@
 class Solution:
     def isUnivalTree(self, root: Optional[TreeNode]) -> bool:
         queue = deque([root])
-        visited = set([root.val])
+        val = root.val
         
         while queue:
             node = queue.popleft()
-            if node.val not in visited:
+            if val != node.val:
                 return False
 
             if node.right:
