@@ -5,10 +5,10 @@ class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
         n = len(grid)
         m = len(grid[0])
-
         queue = deque()
-
+        min_time = 0
         fresh = 0
+
         for row in range(n):
             for col in range(m):
                 orange = grid[row][col]
@@ -19,7 +19,6 @@ class Solution:
                 elif orange == 1:
                     fresh += 1
         
-        min_time = 0
 
         while queue and fresh:
             len_ = len(queue)
@@ -50,7 +49,6 @@ class Solution:
             min_time += 1
 
         if fresh:
-            print(fresh)
             return -1
 
         return min_time
