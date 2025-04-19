@@ -9,27 +9,28 @@ class Employee:
 
 class Solution:
     def getImportance(self, employees: List['Employee'], id: int) -> int:
-        emp_info = defaultdict(list)
-        root = None
+        employee_map = defaultdict(list)
+        target_id = None
+        
         for employee in employees:
             if employee.id == id:
-                root = employee.id
+                target_id = employee.id
 
-            emp_info[employee.id] = employee
+            employee_map[employee.id] = employee
         
-        if not root:
+        if not target_id:
             return 0
 
-        queue = deque([root])
+        queue = deque([target_id])
         total_importance = 0
 
         while queue:
-            emp_id = queue.popleft()
-            emp = emp_info[emp_id]
+            current_id = queue.popleft()
+            current_employee = employee_map[current_id]
 
-            total_importance += emp.importance
+            total_importance += current_employee.importance
 
-            for sub in emp.subordinates:
+            for sub in current_employee.subordinates:
                 queue.append(sub)
 
         return total_importance
