@@ -29,7 +29,7 @@ class Solution:
                 if not visited[row][col] and board[row][col] == "O":
                     cells = []
                     touch_board = dfs(row, col, cells)
-                    print(cells, touch_board)
+
                     if not touch_board:
                         all_changes.extend(cells)
         
