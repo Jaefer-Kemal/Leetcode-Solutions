@@ -17,24 +17,26 @@ class Solution:
             is_border = row == 0 or col == 0 or row == n - 1 or col == m - 1
 
             for nr, nc in directions:
-                if self.inbound(row + nr, col + nc, n, m) and not visited[row + nr][col + nc]  and board[row + nr][col + nc] == "O":
+                if (self.inbound(row + nr, col + nc, n, m) 
+                    and not visited[row + nr][col + nc]  
+                    and board[row + nr][col + nc] == "O"):
+
                     result = dfs(row + nr, col + nc, cells)
                     is_border = is_border or result
 
             return is_border
         
-        all_changes = []
         for row in range(n):
             for col in range(m):
                 if not visited[row][col] and board[row][col] == "O":
                     cells = []
-                    touch_board = dfs(row, col, cells)
+                    touches_board = dfs(row, col, cells)
 
-                    if not touch_board:
-                        all_changes.extend(cells)
+                    if not touches_board:
+                        for r, c in cells:
+                            board[r][c] = "X"
         
-        for r, c in all_changes:
-            board[r][c] = "X"
+        
 
 
         
