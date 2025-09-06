@@ -5,12 +5,12 @@ class Solution:
         maximum_seq = 0
         for num in memo:
             count = 1
-            exist = num
-            if exist not in visited:
-                while exist + 1 in memo:
-                    visited.add(exist)
+            curr = num
+            if curr not in visited:
+                while curr + 1 in memo:
+                    visited.add(curr)
                     count += 1
-                    exist += 1
+                    curr += 1
 
             maximum_seq = max(count, maximum_seq)
         
