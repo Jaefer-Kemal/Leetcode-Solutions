@@ -1,21 +1,12 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count_freq = Counter(nums)
+        count_freq = dict(sorted(count_freq.items(), key=lambda x:x[1], reverse=True))
+        res = []
+        for num, freq in count_freq.items():
+            if len(res) < k:
+                res.append(num)
+            else:
+                break
 
-        num_count = Counter(nums)
-        max_freq = max(num_count.values())
-
-        buckets = [[] for _ in range(max_freq + 1)]
-
-        for num, freq in num_count.items():
-            buckets[freq].append(num)
-
-        results = []
-
-        for i in range(len(buckets) - 1, -1, -1):
-            current = buckets[i]
-
-            for num in current:
-                results.append(num)
-
-            if len(results) == k:
-                return results
+        return res
