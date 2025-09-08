@@ -5,7 +5,6 @@ class Solution:
 
         left = 0
         right = len(nums) - 1
-        res = 0
         while left <= right:
             mid = (left + right) // 2
 
@@ -14,9 +13,8 @@ class Solution:
 
             elif nums[mid] > target:
                 right = mid - 1
-                res = mid
 
             else:
                 return mid
 
-        return res
+        return left
