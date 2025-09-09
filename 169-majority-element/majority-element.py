@@ -1,11 +1,14 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        count_freq = defaultdict(int)
-        max_count = len(nums) // 2
+        count = 0
+        candidate = nums[0]
         for num in nums:
-            count_freq[num] += 1
-            if count_freq[num] > max_count:
-                return num
+            if count == 0:
+                candidate = num
             
+            if candidate != num:
+                count -= 1
+            else:
+                count += 1
         
-        return majority_element
+        return candidate
