@@ -14,6 +14,10 @@ class Solution:
         subarr_zero.append(count)
         print(subarr_zero)
         for num in subarr_zero:
+            if num == 1:
+                occurence += 1
+                continue
+
             if num in memo:
                 occurence += memo[num]
                 continue
@@ -23,6 +27,7 @@ class Solution:
                 for n in range(1,num + 1):
                     cnt += n
                     memo[n] = cnt
-                    
+
                 occurence += cnt
+
         return occurence
