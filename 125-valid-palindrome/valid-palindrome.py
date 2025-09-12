@@ -1,5 +1,6 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
+        s = s.lower()
         left = 0 
         right = len(s) - 1
 
@@ -10,7 +11,7 @@ class Solution:
             while left < right and (not s[right].isalnum() or s[right] == " " ):
                 right -= 1
         
-            if s[left].lower() != s[right].lower():
+            if s[left] != s[right]:
                 return False
             
             left += 1
