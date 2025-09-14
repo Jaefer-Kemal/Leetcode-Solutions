@@ -1,37 +1,19 @@
-from collections import deque
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        l = 0
-        min_ = len(strs[0])
-        for n in strs:
-            if n == "":
-                return ""
-            if min_ >= len(n):
-                min_ = len(n)
-                value = n
+        min_str = strs[0]
 
-        c = strs[0][0]
+        for word in strs:
+            if len(min_str) > len(word):
+                min_str = word
         
-        c = list(value)
-        flag = False
-        for i in range(min_):
-            for j in range(len(strs)):
-                if c[i] != strs[j][i]:
-                    flag = True
-                    
-            if flag:
-                break
-            l += 1
-        if l == 0:
-            return ""
-        return "".join(c[:l])
+        res = []
+        for char in range(len(min_str)):
+            for word in strs:
+                if word[char] != min_str[char]:
+                    return "".join(res)
+            
+            res.append(min_str[char])
+        
+        return "".join(res)
 
                 
-
-
-
-        
-
-
-
-        
