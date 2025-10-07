@@ -8,14 +8,8 @@ class Solution:
         for i in range(len(A)):
             setA.add(A[i])
             setB.add(B[i])
-
-            if A[i] in setB:
-                common.add(A[i])
             
-            if B[i] in setA:
-                common.add(B[i])
-            
-            res.append(len(common))
+            res.append(len(setA & setB))
         
         return res
 
